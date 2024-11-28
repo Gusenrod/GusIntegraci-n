@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subir Información</title>
+  <style>
+    /* General */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8fafc;
+      margin: 0;
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background-color: #223a5e;
+      color: #ffffff;
+      height: 100vh;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 20px;
+      padding-left: 20px;
+    }
+
+    .sidebar h2 {
+      color: #ffffff;
+      margin-bottom: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      padding-left: 10px;
+    }
+
+    .sidebar a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 5px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar a:hover {
+      background-color: #1a2e47;
+    }
+
+    .sidebar a i {
+      margin-right: 10px;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 250px; /* Same width as sidebar */
+      padding: 40px;
+      width: calc(100% - 250px);
+    }
+
+    form {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2, h3 {
+      margin-bottom: 20px;
+      color: #223a5e;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #4a4a4a;
+      margin-bottom: 5px;
+    }
+
+    .form-group input, .form-group select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .error {
+      display: none;
+      color: #d9534f;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>SA-EDU</h2>
+    <li><a href="iniciosecretaria.html">Tablero <i class="fas fa-tachometer-alt"></i></a></li>
+<li><a href="infoestudiantes.html">Alumnos <i class="fas fa-user-graduate"></i></a></li>
+<li><a href="horariosecretaria.html">Horario <i class="fas fa-calendar-alt"></i></a></li>
+<li><a href="asignaciónpuntos.html">Recompensas <i class="fas fa-gift"></i></a></li>
+<li><a href="mensajessecretaria.html">Bandeja de Entrada <i class="fas fa-envelope"></i></a></li>
+
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <form onsubmit="return validarFormulario()">
+      <h2>Actualizar Información</h2>
+
+      <div class="form-group">
+        <label for="anio">Año</label>
+        <input type="text" id="anio" name="anio" maxlength="4" pattern="[0-9]{4}" placeholder="Ingrese el año (4 dígitos)" required>
+        <span class="error" id="errorAnio">Por favor ingrese un año válido de 4 dígitos.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="colegio">Colegio Procedencia</label>
+        <input type="text" id="colegio" name="colegio" maxlength="50" placeholder="Ingrese el colegio de procedencia" required>
+        <span class="error" id="errorColegio">Este campo es obligatorio.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="detalle">Detalle</label>
+        <input type="text" id="detalle" name="detalle" maxlength="100" placeholder="Ingrese los detalles">
+      </div>
+
+      <h3>Datos del Estudiante</h3>
+
+      <div class="form-group">
+        <label for="nombresEstudiante">Nombres</label>
+        <input type="text" id="nombresEstudiante" name="nombresEstudiante" maxlength="50" placeholder="Ingrese el nombre del estudiante" required>
+        <span class="error" id="errorNombresEstudiante">Este campo es obligatorio.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="apellidoPaterno">Apellido Paterno</label>
+        <input type="text" id="apellidoPaterno" name="apellidoPaterno" maxlength="50" placeholder="Ingrese el apellido paterno" required>
+        <span class="error" id="errorApellidoPaterno">Este campo es obligatorio.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="apellidoMaterno">Apellido Materno</label>
+        <input type="text" id="apellidoMaterno" name="apellidoMaterno" maxlength="50" placeholder="Ingrese el apellido materno" required>
+        <span class="error" id="errorApellidoMaterno">Este campo es obligatorio.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="dniEstudiante">DNI</label>
+        <input type="text" id="dniEstudiante" name="dniEstudiante" maxlength="8" pattern="[0-9]{8}" placeholder="Ingrese el DNI (8 dígitos)" required>
+        <span class="error" id="errorDniEstudiante">Ingrese un DNI válido de 8 dígitos.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+        <span class="error" id="errorFechaNacimiento">Seleccione una fecha válida.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="celularEstudiante">Nro. Celular</label>
+        <input type="text" id="celularEstudiante" name="celularEstudiante" maxlength="9" pattern="[0-9]{9}" placeholder="Ingrese el número de celular (9 dígitos)" required>
+        <span class="error" id="errorCelularEstudiante">Ingrese un número de celular válido de 9 dígitos.</span>
+      </div>
+
+      <div class="form-group">
+        <label for="sexo">Sexo</label>
+        <select id="sexo" name="sexo" required>
+          <option value="">Seleccione</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Femenino">Femenino</option>
+        </select>
+        <span class="error" id="errorSexo">Por favor seleccione una opción.</span>
+      </div>
+
+      <button type="submit" class="btn">Guardar</button>
+    </form>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    function validarFormulario() {
+      let valido = true;
+      const campos = [
+        { id: 'anio', mensaje: 'Por favor ingrese un año válido de 4 dígitos.' },
+        { id: 'colegio', mensaje: 'Este campo es obligatorio.' },
+        { id: 'nombresEstudiante', mensaje: 'Este campo es obligatorio.' },
+        { id: 'apellidoPaterno', mensaje: 'Este campo es obligatorio.' },
+        { id: 'apellidoMaterno', mensaje: 'Este campo es obligatorio.' },
+        { id: 'dniEstudiante', mensaje: 'Ingrese un DNI válido de 8 dígitos.' },
+        { id: 'fechaNacimiento', mensaje: 'Seleccione una fecha válida.' },
+        { id: 'celularEstudiante', mensaje: 'Ingrese un número de celular válido de 9 dígitos.' },
+        { id: 'sexo', mensaje: 'Por favor seleccione una opción.' }
+      ];
+
+      campos.forEach(campo => {
+        const input = document.getElementById(campo.id);
+        const errorSpan = document.getElementById('error' + campo.id.charAt(0).toUpperCase() + campo.id.slice(1));
+        
+        if (!input.checkValidity()) {
+          errorSpan.textContent = campo.mensaje;
+          errorSpan.style.display = 'block';
+          valido = false;
+        } else {
+          errorSpan.style.display = 'none';
+        }
+      });
+
+      return valido;
+    }
+  </script>
+</body>
+</html>
